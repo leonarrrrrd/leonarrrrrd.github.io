@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../styles/base.css">
+
+    <!-- <script type="text/javascript" src="js/cursor.js"></script> -->
+
+    <title>leonarrrd | about.</title>
+</head>
+
+
+<body scroll="no" style="overflow: hidden;">
+
+    <div class="cursor plane"></div>
+    <div class="cursor trail"></div>
+
+    <div class="main-wrapper">
+        <!-- <div class="middle"><hr></div> -->
+        <div class="home-decorators">
+            <p class="greeting">hi! my name is</p>
+            <div class="name-decorator">
+                <h1 id="main-name-element">leonar<span id="element-to-appear">rr</span><span id="remaining-name-letters">d<span id="name-dot">.</span></span></h1>
+            </div>
+        </div>
+
+        <div class="main-menu">
+            <div class="nav-container">
+                <p class="nav-element home"><a href="../index.html">home<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element about"><a href="#about-menu">about<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element projects"><a href="index.html">projects<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element contact"><a href="index.html">contact<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element gallery"><a href="index.html">gallery<span id="nav-element-dot">.</span></a></p>
+            </div>
+
+            <div class="about-container">
+                <div class="about-me-container-1">
+                    <h4 class="about-page-header about-me-header">about me.</h4>
+                    <p class="about-page-text about-me-text">
+                        hey, i'm leonard! i'm 20 years old and study geology and <br>archaeology in Austria.
+                        <br>
+                        i am currently studying in the third and first semester.
+                        <br>
+                        on this website i will publish my proudest projects and pictures!
+                        <br>
+                        i made this website entirely because i was bored and now i do not have enough ideas for things to put here.
+                    </p>
+                </div>
+
+                <div class="about-me-container-2">
+                    <h4 class="about-page-header skills-header">skills.</h4>
+                    <p class="about-page-text skills-text">
+                        i have a wide variety of skills relevant to my fields of study and <br>programming.
+                        <br>
+                        i know multiple programming languages, libraries, and frameworks.
+                        <br>
+                        i also have experience using software like QGis.
+                        <br>
+                        <img src="../images/python.svg.png" width="20px" height="20px"><span>python</span>
+                        <img src="../images/html.png" width="20px" height="20px"><span>html</span>
+                        <img src="../images/css.png" width="20px" height="20px"><span>css</span>
+                        <img src="../images/javascript.png" width="20px" height="20px"><span>javascript</span>
+                        <img src="../images/jquery.png" width="20px" height="20px"><span>jquery</span>
+                        <img src="../images/c.png" width="20px" height="20px"><span>c</span>
+                        <img src="../images/github.png" width="20px" height="20px"><span>git & github</span>
+                    </p>
+                </div>
+
+                <div class="about-me-container-3">
+                    <h4 class="about-page-header interests-header">interests.</h4>
+                    <p class="about-page-text interests-text">
+                        my biggest interests (obviously) include archaeology and geology. <br>i'm also fairly passionate about ecology and technology.
+                        <br>
+                        i am highly interested in arctic/polar regions, especially the<br>nature and cultures of the region.
+                        <br>
+                        aside from that i also enjoy learning about mythology/folklore<br>and linguistics.
+                    </p>
+                </div>
+
+                <div class="about-me-container-4">
+                    <h4 class="about-page-header hobbies-header">hobbies.</h4>
+                    <p class="about-page-text hobbies-text">
+                        when i'm not at uni, studying, or coding i enjoy other things like:
+                        <br>
+                        hiking, running, climbing, and skiing.
+                        <br>
+                        i also like reading - i'm a big fan of horror/thriller related stuff.
+                        <br>
+                        i also love music to a borderline unhealthy extend.
+                    </p>
+                </div>
+            </div>
+
+            <div class="confetti-container" id="confetti-wrapper"></div>
+        </div>
+
+    </div>
+
+    <script>
+    const cursor_plane = document.querySelector('.plane');
+    const cursor_trail = document.querySelector('.trail');
+
+
+    const positionElement = (e)=> {
+        const mouseY = e.clientY;
+        const mouseX = e.clientX;
+        
+        cursor_plane.style.transform = `translate3d(${mouseX-38}px, ${mouseY-10}px, 0)`;
+        
+        cursor_trail.style.transform = `translate3d(${mouseX-60}px, ${mouseY-10}px, 0)`;
+    }
+
+    window.addEventListener('mousemove', positionElement)
+    </script>
+
+    <script>
+    const doc = document.getElementById("main-name-element");
+
+    doc.addEventListener("click", () => {
+        doc.classList.add("animate");
+        // Remove animation class after it finishes (0.5s)
+        setTimeout(() => {
+            doc.classList.remove("animate");
+            }, 500);
+    });
+    </script>
+
+    <script>
+    const confetti_container = document.querySelector('.confetti-container');
+    const confetti_button = document.getElementById('confetti-spawner');
+    const TOTAL = 310
+
+    function getRandomColor() {
+        const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    async function summon_confetti() {
+        console.log('summon_confetti() started!');
+        let i = 0;
+        while (i < TOTAL) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.setProperty('--fall-duration', `${Math.random() * 3 + 2}s`);
+            confetti.style.setProperty('--confetti-color', getRandomColor());
+            confetti_container.appendChild(confetti);
+
+            confetti.addEventListener('animationend', () => confetti.remove(), { once:true });
+
+            i++;
+
+            await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        console.log('summon_confetti() ended!');
+    }
+    confetti_button.addEventListener("click", async () => {
+        confetti_container.style.setProperty("--confetti-z", '7', 'important');
+        await summon_confetti();
+        
+        setTimeout(() => {
+            confetti_container.style.setProperty("--confetti-z", '-1', 'important');
+        }, 4000);
+    });
+    </script>
+
+</body>
+
+
+</html>

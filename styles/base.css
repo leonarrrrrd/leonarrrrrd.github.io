@@ -1,0 +1,563 @@
+/* ================================== 
+            BASE.CSS
+================================== */
+::selection { background-color: #5546404d; }
+:hover { cursor: none; }
+
+:root {
+    --visibility-confetti: hidden;
+    --confetti-z: -1;
+    --confetti-x: 0;
+}
+
+/* ------------------- */
+/* ----- GENERAL ----- */
+/* ------------------- */
+html, body {
+    /* height: 100%; */
+    font-family:'Times New Roman', Times, serif;
+    background-color: #14110F;
+    font-size: 16px;
+}
+body { cursor: none; }
+
+h1 { font-size: 2.5em; font-weight: 300; }
+h2 { font-size: 2.0em; font-weight: 300; }
+h3 { font-size: 1.5em; font-weight: 300; }
+h4 { font-size: 1.2em; font-weight: 300; }
+h5 { font-size: 1.0em; font-weight: 300; }
+h6 { font-size: 0.5em; font-weight: 300; }
+h1, h2, h3, h4, h5, h6 { color: #8C6239; }
+
+p { color: #cfc9c2; }
+
+a { color: #554640; text-decoration: none; cursor: pointer; }
+
+/* ------------------ */
+/* ----- CURSOR ----- */
+/* ------------------ */
+.plane {
+    width: 32px;
+    height: 32px;
+    background: no-repeat 10% url(plane.svg);
+    color: #A49F97;
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
+}
+.trail {
+    width: 32px;
+    height: 32px;
+    background: no-repeat url(trail\ \(2\).svg);
+    color: #a49f9770;
+}
+
+/* ------------------- */
+/* ----- WRAPPER ----- */
+/* ------------------- */
+.main-wrapper {
+    display: flex;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    margin-right: auto; margin-left: auto;
+    margin-top: 0em; margin-bottom: 0em;
+    padding-left: 0em; padding-right: 0em;
+    padding-top: 0em; padding-bottom: 0em;
+}
+
+.middle {
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    rotate: 90deg;
+}
+
+/* ---------------------- */
+/* ----- DECORATORS ----- */
+/* ---------------------- */
+.animate { 
+    animation: shake-bottom .5s ease, change-color .5s;
+}
+.broke {
+    rotate: 32deg;
+    letter-spacing: 15px;
+    
+}
+
+.home-decorators {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    top: 0;
+    right: 0; left: 0;
+
+    height: 25%;
+
+    border-bottom: 1px solid #A49F97;
+}
+    .greeting {
+        color: #8C6239;
+        font-size: 1.5em !important;
+        padding-bottom: 10px;
+    }
+    .name-decorator { 
+        position: absolute;
+        width: fit-content;
+        transform-origin: left;
+        padding-top: 20px;
+     }
+    .name-decorator h1 {
+        font-weight: 550;
+        transition: 1s ease-in-out;
+
+        font-size: 7em !important;
+
+        margin-top: 20px;
+    }
+    .name-decorator h1:hover {
+        letter-spacing: 15px;
+        transition: 0.3s ease-in-out;
+
+        text-shadow: 0px 20px 30px #9b7e721e;
+    }
+        #element-to-appear {
+            display: inline-block;
+            position: absolute;
+
+            letter-spacing: 15px;
+
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        #remaining-name-letters {
+            transition: 0.9s;
+        }
+    .name-decorator h1:hover #element-to-appear {
+        opacity: 1;
+    }
+    .name-decorator h1:hover #remaining-name-letters {
+        margin-left: 0.933em;
+        transition: 0.8s;
+    }
+
+
+/* --------------------- */
+/* ----- SEPARATOR ----- */
+/* --------------------- */
+.separate {
+    display: block;
+    position: relative;
+
+    padding-top: 16%;
+
+    width: 180px;
+    height: 180px;
+
+    border: 1px solid #A49F97;
+        border-top: 1px;
+        border-right: 0px; border-left: 0px;
+    
+    z-index: -1;
+}
+
+/* ---------------------- */
+/* ----- NAV - MENU ----- */
+/* ---------------------- */
+.main-menu {
+    /* display: flex; */
+    position: relative;
+
+    top: 25%;
+    right: 0; left: 0;
+
+    height: 100%; width: 100%;
+
+    font-size: 2em !important;
+}
+    .nav-container {
+        position: absolute;
+        justify-content: center;
+        padding: 0;
+        border-right: 1px solid #A49F97;
+        height: 100%; width: 16%;
+    }
+        #nav-element-dot {
+            color: #554640;
+        }
+        .nav-element {
+            margin: 1.875em;
+        }
+        .nav-element a, .home a, .about a, .projects a, .contact a, .gallery a {
+            display: inline-block;
+            transition: transform 0.4s ease,
+                        text-shadow 0.4s ease,
+                        color 0.4s ease;
+            transform-origin: center;
+            will-change: transform;
+            padding-bottom: 0;  
+        }
+        .nav-element a:hover {
+            transform: scale(1.35) translateY(-4px); /* scale and lift visually */
+            color: #556B2F;
+            text-shadow: 0 15px 10px rgba(85, 107, 47, 0.822);
+            z-index: 5;
+        }
+        .nav-element a:hover #nav-element-dot {
+            color: #554640;
+            font-weight: bold;
+        }
+    
+/* ----------------------- */
+/* ----- HOME - MENU ----- */
+/* ----------------------- */
+    .home-container {
+        position: absolute;
+        right: 0;
+        padding: 0;
+
+        height: 100%; width: 84%;
+        text-align: center;
+    }
+        .hello-home {
+            margin: 10px; 
+                margin-top: 35px;    
+        }
+            .home-note {
+                font-size: 60%;
+                display: inherit;
+            }
+            .home-note { 
+                display: inline-block;
+                transform: rotate(0deg);
+                backface-visibility: hidden;
+                animation: shake-lr 15s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+        .home-sep {
+            width: 100px;
+            color: #A49F97;
+        }
+        .home-text {
+            margin: 20px;
+        }
+            .main-menu:has(.about-referral:hover) .about a {
+                animation: pulsate-fwd 1s ease-in-out infinite both;
+                transform: scale(1.35) (4px);
+                color: #556B2F;
+                text-shadow: 0 15px 10px rgba(85, 107, 47, 0.822);
+            }
+            .main-menu:has(.projects-referral:hover) .projects a {
+                animation: pulsate-fwd 1s ease-in-out infinite both;
+                transform: scale(1.35) (4px);
+                color: #556B2F;
+                text-shadow: 0 15px 10px rgba(85, 107, 47, 0.822);
+            }
+            .main-menu:has(.contact-referral:hover) .contact a {
+                animation: pulsate-fwd 1s ease-in-out infinite both;
+                transform: scale(1.35) (4px);
+                color: #556B2F;
+                text-shadow: 0 15px 10px rgba(85, 107, 47, 0.822);
+            }
+            .main-menu:has(.gallery-referral:hover) .gallery a {
+                animation: pulsate-fwd 1s ease-in-out infinite both;
+                transform: scale(1.35) (4px);
+                color: #556B2F;
+                text-shadow: 0 15px 10px rgba(85, 107, 47, 0.822);
+            }
+
+/* ------------------------ */
+/* ----- ABOUT - MENU ----- */
+/* ------------------------ */
+.about-container {
+    position: absolute;
+    right: 0;
+    padding: 0;
+
+    width: 84%; height: 100%;
+    overflow: hidden;
+}
+    .about-page-header {
+        margin: 0;
+        position: relative;
+        top: 40%;
+        transition: .3s;
+        overflow: hidden;
+    }
+    .about-page-text {
+        margin: 0;
+        position: relative;
+        transition: .3s;
+        opacity: 0;
+        width: 70%;
+        font-size: .9em !important;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .about-me-container-1 {
+        position: absolute;
+        margin: 0;
+        left: 0; top: 0;
+        width: 50%; height: 40%;
+        border-bottom: 1px solid #A49F97;
+        border-right: 1px solid #A49F97;
+        text-align: center;
+        transition: .5s;
+        z-index: 1;
+        overflow: hidden;
+    }
+        .about-me-container-1:hover {
+            position: absolute;
+            width: 100%; height: 40%;
+            z-index: 2;
+            overflow: hidden;
+        }
+        .about-me-container-1:hover + .about-me-container-2 { opacity: 0; }
+        .about-me-container-1:hover .about-me-header {
+            rotate: -90deg;
+            left: -40%;
+            font-size: 1.8em;
+        }
+        .about-me-container-1:hover .about-me-text {
+            opacity: 1;
+            right: -25%; top: -6%;
+            text-align: start;
+            overflow: hidden;
+        }
+    .about-me-container-2 {
+        position: absolute;
+        margin: 0;
+        right: 0; top: 0;
+        width: 50%; height: 40%;
+        border-bottom: 1px solid #A49F97;
+        border-left: 0.5px solid #A49F97;
+        text-align: center;
+        transition: .5s;
+        z-index: 1;
+        overflow: hidden;
+    }
+        .about-me-container-2:hover {
+            position: absolute;
+            width: 100%; height: 40%;
+            overflow: hidden;
+        }
+        .about-container:has(.about-me-container-2:hover) .about-me-container-1 { opacity: 0; }
+        .about-me-container-2:hover .skills-header {
+            rotate: 90deg;
+            right: -40%;
+            font-size: 1.8em;
+        }
+        .about-me-container-2:hover .skills-text {
+            opacity: 1;
+            left: 10%; top: -6%;
+            text-align: end;
+            overflow: hidden;
+        }
+    .about-me-container-3 {
+        position: absolute;
+        margin: 0;
+        left: 0; top: 40%;
+        width: 50%; height: 40%;
+        border-right: 1px solid #A49F97;
+        text-align: center;
+        transition: .5s;
+        z-index: 1;
+        overflow: hidden;
+    }
+        .about-me-container-3:hover {
+            position: absolute;
+            width: 100%; height: 40%;
+            z-index: 3;
+        }
+        .about-me-container-3:hover + .about-me-container-4 { opacity: 0; }
+        .about-me-container-3:hover .interests-header {
+            rotate: -90deg;
+            left: -40%;
+            font-size: 1.8em;
+        }
+        .about-me-container-3:hover .interests-text {
+            opacity: 1;
+            right: -25%; top: -6%;
+            text-align: start;
+            overflow: hidden;
+        }
+    .about-me-container-4 {
+        position: absolute;
+        margin: 0;
+        right: 0; top: 40%;
+        width: 50%; height: 40%;
+        text-align: center;
+        border-left: 0.5px solid #A49F97;
+        transition: .5s;
+        z-index: 1;
+        overflow: hidden;
+    }
+        .about-me-container-4:hover {
+            position: absolute;
+            width: 100%; height: 40%;
+        }
+        .about-container:has(.about-me-container-4:hover) .about-me-container-3 { opacity: 0; }
+        .about-me-container-4:hover .hobbies-header {
+            rotate: 90deg;
+            left: 40%;
+            font-size: 1.8em;
+        }
+        .about-me-container-4:hover .hobbies-text {
+            opacity: 1;
+            left: 10%; top: -6%;
+            text-align: end;
+            overflow: hidden;
+        }
+
+/* ---------------------- */
+/* ----- ANIMATIONS ----- */
+/* ---------------------- */
+
+/* shake when name element is clicked */
+@keyframes shake-bottom {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+
+/* change color of name element */
+@keyframes change-color {
+    0% {
+        color: #8C6239;
+    }
+    50% {
+        color: #761717;
+    }
+    100% {
+        color: #8C6239;
+    }
+}
+
+/* pulsate when referral is hovered */
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* shake home note */
+@keyframes shake-lr {
+  0%,
+  19% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+  2%, 18% {
+    transform: rotate(1deg);
+  }
+  4%, 16% {
+    transform: rotate(-2deg);
+  }
+  6%, 10%, 14% {
+    transform: rotate(2deg);
+  }
+  7%, 12% {
+    transform: rotate(-1deg);
+  }
+  18.1% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes confetti-falling {
+    0% {
+        transform: translateY(-100%) rotate(0deg) translateX(-30px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(30px);
+        opacity: 0.8;
+    }
+}
+
+/* -------------------- */
+/* ----- CONFETTI ----- */
+/* -------------------- */
+.confetti-container, #confetti-wrapper {
+    position: fixed;
+    right: 0;
+    padding: 0;
+
+    height: 100%; width: 84%;
+    overflow: hidden;
+    z-index: var(--confetti-z) !important;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  background: var(--confetti-color, red);
+  opacity: 0.9;
+  animation: confetti-falling var(--fall-duration, 4s) linear 1 forwards;
+  border-radius: 2px;
+  z-index: var(--confetti-z) !important;
+}
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) {
+  left: 10%;
+  --confetti-color: #ff6347;
+  --fall-duration: 3s;
+}
+.confetti-piece:nth-child(2) {
+  left: 25%;
+  --confetti-color: #ffa500;
+  --fall-duration: 5s;
+}
+.confetti-piece:nth-child(3) {
+  left: 40%;
+  --confetti-color: #32cd32;
+  --fall-duration: 4.5s;
+}
+.confetti-piece:nth-child(4) {
+  left: 60%;
+  --confetti-color: #1e90ff;
+  --fall-duration: 3.5s;
+}
+.confetti-piece:nth-child(5) {
+  left: 80%;
+  --confetti-color: #ff69b4;
+  --fall-duration: 6s;
+}
+.confetti-piece {
+  clip-path: rect(5px 15px 10px 5px round 20%);
+  z-index: var(--confetti-z) !important;
+}

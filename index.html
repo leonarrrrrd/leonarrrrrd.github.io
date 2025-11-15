@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="styles/base.css">
+
+    <!-- <script type="text/javascript" src="js/cursor.js"></script> -->
+
+    <title>leonarrrd | home.</title>
+</head>
+
+
+<body scroll="no" style="overflow: hidden;">
+
+    <div class="cursor plane"></div>
+    <div class="cursor trail"></div>
+
+    <div class="main-wrapper">
+        <!-- <div class="middle"><hr></div> -->
+        <div class="home-decorators">
+            <p class="greeting">hi! my name is</p>
+            <div class="name-decorator">
+                <h1 id="main-name-element">leonar<span id="element-to-appear">rr</span><span id="remaining-name-letters">d<span id="name-dot">.</span></span></h1>
+            </div>
+        </div>
+
+        <div class="main-menu">
+            <div class="nav-container">
+                <p class="nav-element home"><a href="index.html">home<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element about"><a href="views/about.html">about<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element projects"><a href="index.html">projects<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element contact"><a href="index.html">contact<span id="nav-element-dot">.</span></a></p>
+                <p class="nav-element gallery"><a href="index.html">gallery<span id="nav-element-dot">.</span></a></p>
+            </div>
+
+            <div class="home-container" scroll="on">
+                <h3 class="hello-home">hey there, i'm leonard and this is my website!<br><span class="home-note" id="confetti-spawner">(it's really <span class="home-note-1">cool</span>!)</span></h3>
+                <hr class="home-sep">
+                <p class="home-text para-1">here you can look at a bunch of cool stuff about me!</p>
+                <p class="home-text para-2">feel free to look around - check out my <span class="about-referral"><a>"about me"</a></span> page to find out who i am and what i do!</p>
+                <p class="home-text para-3">to take a look at all the cool stuff i worked on already check out my <span class="projects-referral"><a>"projects"</a></span> page!</p>
+                <p class="home-text para-4">if you want to contact me (for some reason) take a look at the <span class="contact-referral"><a>"contact"</a></span> page!</p>
+                <p class="home-text para-5">lastly, you might also want to take a look at the <span class="gallery-referral"><a>"gallery"</a></span> page to check out my photography!</p>
+            </div>
+
+            <div class="confetti-container" id="confetti-wrapper"></div>
+        </div>
+
+    </div>
+
+    <script>
+    const cursor_plane = document.querySelector('.plane');
+    const cursor_trail = document.querySelector('.trail');
+
+
+    const positionElement = (e)=> {
+        const mouseY = e.clientY;
+        const mouseX = e.clientX;
+        
+        cursor_plane.style.transform = `translate3d(${mouseX-38}px, ${mouseY-10}px, 0)`;
+        
+        cursor_trail.style.transform = `translate3d(${mouseX-60}px, ${mouseY-10}px, 0)`;
+    }
+
+    window.addEventListener('mousemove', positionElement)
+    </script>
+
+    <script>
+    const doc = document.getElementById("main-name-element");
+
+    doc.addEventListener("click", () => {
+        doc.classList.add("animate");
+        // Remove animation class after it finishes (0.5s)
+        setTimeout(() => {
+            doc.classList.remove("animate");
+            }, 500);
+    });
+    </script>
+
+    <script>
+    const confetti_container = document.querySelector('.confetti-container');
+    const confetti_button = document.getElementById('confetti-spawner');
+    const TOTAL = 310
+
+    function getRandomColor() {
+        const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    async function summon_confetti() {
+        console.log('summon_confetti() started!');
+        let i = 0;
+        while (i < TOTAL) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.setProperty('--fall-duration', `${Math.random() * 3 + 2}s`);
+            confetti.style.setProperty('--confetti-color', getRandomColor());
+            confetti_container.appendChild(confetti);
+
+            confetti.addEventListener('animationend', () => confetti.remove(), { once:true });
+
+            i++;
+
+            await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        console.log('summon_confetti() ended!');
+    }
+    confetti_button.addEventListener("click", async () => {
+        confetti_container.style.setProperty("--confetti-z", '7', 'important');
+        await summon_confetti();
+        
+        setTimeout(() => {
+            confetti_container.style.setProperty("--confetti-z", '-1', 'important');
+        }, 4000);
+    });
+    </script>
+
+</body>
+
+
+</html>
